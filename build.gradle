@@ -1,5 +1,45 @@
+//apply plugin: 'java'
+//apply plugin: 'idea'
+//apply plugin: 'opensearch.opensearchplugin'
+//apply plugin: 'opensearch.yaml-rest-test'
+//
+//opensearchplugin {
+//    name 'opensearch-rest-plugin'
+//    description 'Custom OpenSearch REST plugin for educational purposes'
+//    classname 'org.opensearch.rest.action.HelloWorldPlugin'
+//    licenseFile rootProject.file('LICENSE.txt')
+//    noticeFile rootProject.file('NOTICE.txt')
+//}
+//
+//
+//// disabling some unnecessary validations for this plugin
+//testingConventions.enabled = false
+//loggerUsageCheck.enabled = false
+//validateNebulaPom.enabled = false
+//
+//buildscript {
+//    repositories {
+//        mavenCentral()
+//        jcenter()
+//        mavenLocal()
+//    }
+//
+//    dependencies {
+//        classpath "org.opensearch.gradle:build-tools:3.0.0"
+//    }
+//}
+//
+//repositories {
+//    mavenLocal()
+//}
+//
+//dependencies {
+//    // required for the yaml test to run
+//    yamlRestTestImplementation 'org.apache.logging.log4j:log4j-core:2.11.1'
+//}
+
+
 apply plugin: 'java'
-apply plugin: 'idea'
 apply plugin: 'opensearch.opensearchplugin'
 apply plugin: 'opensearch.yaml-rest-test'
 
@@ -11,21 +51,16 @@ opensearchplugin {
     noticeFile rootProject.file('NOTICE.txt')
 }
 
-
-// disabling some unnecessary validations for this plugin
-testingConventions.enabled = false
-loggerUsageCheck.enabled = false
-validateNebulaPom.enabled = false
-
 buildscript {
     repositories {
-        mavenCentral()
-        jcenter()
         mavenLocal()
+        maven { url "https://aws.oss.sonatype.org/content/repositories/snapshots" }
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
     }
 
     dependencies {
-        classpath "org.opensearch.gradle:build-tools:1.0.0-beta1"
+        classpath "org.opensearch.gradle:build-tools:3.0.0-beta1"
     }
 }
 
@@ -33,7 +68,12 @@ repositories {
     mavenLocal()
 }
 
+// disabling some unnecessary validations for this plugin
+testingConventions.enabled = false
+loggerUsageCheck.enabled = false
+validateNebulaPom.enabled = false
+
 dependencies {
     // required for the yaml test to run
-    yamlRestTestImplementation 'org.apache.logging.log4j:log4j-core:2.11.1'
+    yamlRestTestImplementation 'org.apache.logging.log4j:log4j-core:2.21.0'
 }

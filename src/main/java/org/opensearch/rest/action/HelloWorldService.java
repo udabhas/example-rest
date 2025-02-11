@@ -10,7 +10,7 @@ package org.opensearch.rest.action;
 
 import org.opensearch.rest.BytesRestResponse;
 import org.opensearch.rest.RestResponse;
-import org.opensearch.rest.RestStatus;
+import org.opensearch.core.rest.RestStatus;
 
 public class HelloWorldService {
 
